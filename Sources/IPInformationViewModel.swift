@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class IPInformationViewModel: ObservableObject {
+public class IPInformationViewModel: ObservableObject {
     @Published var ipInformation: IPInformation?
     @Published var errorMessage: String?
     @Published var isLoading = false
