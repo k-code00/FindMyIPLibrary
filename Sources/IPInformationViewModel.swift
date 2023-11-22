@@ -9,23 +9,22 @@ import Foundation
 import Combine
 
 public class IPInformationViewModel: ObservableObject {
-    @Published var ipInformation: IPInformation?
-    @Published var errorMessage: String?
-    @Published var isLoading = false
-    @Published var showAlert = false
+    @Published public var ipInformation: IPInformation?
+    @Published public var errorMessage: String?
+    @Published public var isLoading = false
+    @Published public var showAlert = false
 
-    //fetching IP information.
-    func getIPInformation() {
-        self.isLoading = true  //start of a network request
+    public init() {}  // Public initializer
+
+    public func getIPInformation() {
+        self.isLoading = true
         fetchIPInformation { [weak self] result in
             DispatchQueue.main.async {
-                self?.isLoading = false  //end of a network request
+                self?.isLoading = false
                 switch result {
                 case .success(let info):
-                    //if successful, update ipInformation
                     self?.ipInformation = info
                 case .failure(let error):
-                    //if failure, update the errorMessage and set showAlert to true
                     self?.errorMessage = error.localizedDescription
                     self?.showAlert = true
                 }
