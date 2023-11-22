@@ -14,7 +14,7 @@ public class IPInformationViewModel: ObservableObject {
     @Published public var isLoading = false
     @Published public var showAlert = false
 
-    public init() {}  // Public initializer
+    public init() {}
 
     public func getIPInformation() {
         self.isLoading = true
